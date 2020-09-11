@@ -3,11 +3,12 @@ import PackageDescription
 
 let package = Package(
   name: "WKZombie",
-  targets: [
-      Target(name: "WKZombie"),
-      Target(name: "Example", dependencies:["WKZombie"])
-  ],
   dependencies: [
-	   .Package(url: "https://github.com/mkoehnke/hpple.git", Version(0,2,2))
+      .package(url: "https://github.com/mkoehnke/hpple.git", from: "0.2.2"),
+  ],
+  targets: [
+      .target(name: "WKZombie", dependencies: [
+          .product(name: "hpple", package: "hpple"),
+      ]),
   ]
 )
